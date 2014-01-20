@@ -42,6 +42,8 @@
 </li>
 </ol><p>Then, a <a href="http://nodejs.org/">nodejs</a> script iterates through the results of the first crawler and, for each API found, it calls the second crawler.</p>
 
+<script src="https://gist.github.com/bpedro/8530629.js"></script>
+
 <p>It then makes a GET HTTP request to the obtained API <em>documentation URL</em>, hashes the result using the <a href="http://en.wikipedia.org/wiki/SHA-1">SHA1</a> algorithm and stores the result on a file.</p>
 
 <p>The second time the script runs, it compares the generated hash with the one saved previously. If both hashes are different it means that the documentation changed and an alert is emitted.</p>
