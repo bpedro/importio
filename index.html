@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>API Documentation Changes by bpedro</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>API Documentation Changes</h1>
+        <p>my import·io hackathon participation</p>
+
+        <p class="view"><a href="https://github.com/bpedro/importio">View the Project on GitHub <small>bpedro/importio</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/bpedro/importio/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bpedro/importio/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bpedro/importio">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h1>
+
+<p>This <em>hack</em> will automatically find changes in the documentation of thousands of different APIs and generate alerts of those changes as they happen.</p>
+
+<h1>
+<a name="how-does-it-work" class="anchor" href="#how-does-it-work"><span class="octicon octicon-link"></span></a>How does it work?</h1>
+
+<p>The <a href="http://mashape.com">Mashape</a> API Marketplace <a href="http://publicapis.com/">Public API Directory</a> is periodically crawled by two <a href="http://import.io/">import·io</a> <a href="http://support.import.io/knowledgebase/articles/247570-create-a-crawler">crawlers</a>:</p>
+
+<ol>
+<li>the first crawler grabs the URL of each API available on the list;</li>
+<li>the second crawler reads each API page and grabs the following information:
+
+<ul>
+<li>the API <em>title</em>;</li>
+<li>the API <em>logo</em>;</li>
+<li>the API <em>description</em>;</li>
+<li>the API <em>documentation URL</em>.</li>
+</ul>
+</li>
+</ol><p>Then, a <a href="http://nodejs.org/">nodejs</a> script iterates through the results of the first crawler and, for each API found, it calls the second crawler.</p>
+
+<p>It then makes a GET HTTP request to the obtained API <em>documentation URL</em>, hashes the result using the <a href="http://en.wikipedia.org/wiki/SHA-1">SHA1</a> algorithm and stores the result on a file.</p>
+
+<p>The second time the script runs, it compares the generated hash with the one saved previously. If both hashes are different it means that the documentation changed and an alert is emitted.</p>
+
+<h1>
+<a name="why-did-i-do-it" class="anchor" href="#why-did-i-do-it"><span class="octicon octicon-link"></span></a>Why did I do it?</h1>
+
+<p>Because I'd like to see how API documentation changes over time and I figured that monitoring a large number of sources would give me a pretty good idea.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bpedro">bpedro</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
